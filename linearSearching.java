@@ -1,4 +1,4 @@
-package searching;
+
 
 public class linearSearching {
     static int [][] arr = {

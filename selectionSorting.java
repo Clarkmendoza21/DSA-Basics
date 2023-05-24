@@ -1,4 +1,4 @@
-package sorting;
+
 
 public class selectionSorting {
     static int[][] arr = {

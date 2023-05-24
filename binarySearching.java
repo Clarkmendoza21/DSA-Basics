@@ -1,4 +1,4 @@
-package searching;
+
 
 public class binarySearching {
     static int [][] arr = {
