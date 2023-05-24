@@ -1,7 +1,8 @@
-package DSA_Laboratory;
+
 
 public class LinkedList {
     Node head; //THE INDEX ZERO OF THE LINKED LIST
+    int size;
 
     public void add (int data){
         /*
@@ -24,6 +25,7 @@ public class LinkedList {
             //THIS CHANGES THE "NULL" VALUE OF THE LAST INDEX OF THE LIST TO THE ENTERED VALUE
             n.next = node;
         }
+        size++;
     }
 
     public void addToStart (int data){
@@ -33,6 +35,7 @@ public class LinkedList {
         node.next = null;
         node.next = head;
         head = node;
+        size++;
     }
 
     public void addToIndex(int index, int data) {
@@ -78,15 +81,62 @@ public class LinkedList {
         // TO MAKE SURE THAT THE VALUE IS DELETED IT IS SET TO NULL
             n1 = null;
          }
+         size--;
+    }
+
+    public void getElement(int index){
+        Node n = head;
+        if(index == 0) {
+            System.out.println(n.data);
+       }else{
+            for (int i =0; i< index-1;i++){
+                // THIS IS WHERE THE TRAVERSAL OF THE LIST HAPPENS TO FIND THE SPECIFIC INDEX
+                n = n.next;
+            }
+            System.out.println(n.next.data);
+       }
+    }
+
+    public void setElement (int index, int data){
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+
+        Node n = head;
+        for (int i = 0; i<index-1;i++){
+
+            n = n.next;
+        }
+        Node n1= n.next;
+        n1.data = data;
+    }
+
+    public int indexOf (int data){
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+
+        Node n = head;
+       while (node.next != null){
+            if(n.data == data){
+                return indexOf(data);
+            }
+            n = n.next;
+       }
+        return 0;
+    }
+
+    public int size (){
+        return size;
     }
 
     public void print (){
         // THIS IS THE PRINT STATEMENT OF THE PROGRAM WHERE IT RETURNS THE VALUES OF EACH NODE WHEN CALLED
         Node node = head;
         while (node.next != null ){
-            System.out.println(node.data);
+            System.out.print(node.data+" ");
             node = node.next;
         }
-        System.out.println(node.data);
+        System.out.print(node.data+ "\n");
     }
 }

@@ -1,4 +1,4 @@
-package DSA_Laboratory;
+
 
 public class Node {
     //THE NODE CLASS IF THE LINKED LIST

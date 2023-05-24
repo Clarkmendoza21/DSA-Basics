@@ -1,4 +1,3 @@
-package DSA_Laboratory;
 
 public class app {
     
@@ -11,8 +10,10 @@ public class app {
         list.add(65);
         list.addToStart(2);
         list.addToIndex(4, 76);
-        list.delete(3);
         list.print();
+        list.setElement(4, 100);
+        System.out.println(list.indexOf(4354));
+        
     }
 
 }
