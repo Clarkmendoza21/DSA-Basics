@@ -5,6 +5,7 @@ import java.util.Iterator;
  *
  * @author Russel L. Villacarlos
  * @param <E> element type
+ * 
  */
 public class LinkedList<E> implements List<E> {
 public static void main(String[] args) {

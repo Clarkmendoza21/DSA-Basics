@@ -5,6 +5,7 @@ package linkedList;
  *
  * @author Russel L. Villacarlos
  * @param <E> element type
+ * 
  */
 public interface List<E> extends Iterable<E>{
     void add(int i, E e);
