@@ -128,7 +128,7 @@ public class CircularLinkedList<E> implements List<E> {
     }
 
     public E getBookmark(){
-        E result = (finger == head)?  null : get(indexOfBookmark());
+        E result = (size == 0 || finger == head)?  null : get(indexOfBookmark());
         //TODO: Return the element pointed by the finger
         return result;
     }
