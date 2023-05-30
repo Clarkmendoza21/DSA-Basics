@@ -12,7 +12,7 @@ public class app {
         list.add(4342);
         list.add(2, 75);
         list.remove(4);
-       list.clear();
+        list.clear();
         
         System.out.println("finger index is: "+ list.indexOfBookmark());
         System.out.println("finger value is: "+ list.getBookmark());
