@@ -28,8 +28,8 @@ public class CircularLinkedList<E> implements List<E> {
         this.head.next = head;
         this.head.prev = head;
 
-        this.finger.next = head;//FONGER
-        this.finger.prev = head;//FINGER
+        this.finger.next = finger;//FINGER
+        this.finger.prev = finger;//FINGER
         this.size = 0;
         
     }
@@ -42,8 +42,10 @@ public class CircularLinkedList<E> implements List<E> {
         newNode.next = cur;
         newNode.prev.next = newNode;
         newNode.next.prev = newNode;
-        finger.value = newNode.value; // FINGER
+        finger = newNode;
         this.size++;
+         
+
     }
 
     public void add(E value) {
@@ -52,20 +54,16 @@ public class CircularLinkedList<E> implements List<E> {
 
     public E remove(int index) {
         Node toRemove = getNodeAt(index);
+        finger = toRemove.prev;
+        
         toRemove.prev.next = toRemove.next;
         toRemove.next.prev = toRemove.prev;
+        if (index<size) toRemove.next =finger;
         toRemove.prev = null;
-        
-        Node nextValue = toRemove.next;
-        if (index == size-1){
-            finger = head;
-        }else{
-            finger = nextValue;// FINGER
-        }
+        toRemove.next = null;
         this.size--;
         return toRemove.value;
     }
-
     public boolean remove(E value) {
         int index = indexOf(value);
         if (index == -1) {
@@ -80,7 +78,7 @@ public class CircularLinkedList<E> implements List<E> {
         int i = 0;
         while (itr != head) {
             if (itr.value.equals(value)) {
-                finger.value = itr.value; //FINGER
+                this.finger= itr; //FINGER
                 return i;
             }
             itr = itr.next;
@@ -102,7 +100,7 @@ public class CircularLinkedList<E> implements List<E> {
         Node cur = getNodeAt(index);
         E oldValue = cur.value;
         cur.value = value;
-        finger.value = cur.value;// FINGER
+        finger = cur;// FINGER
         return oldValue;
     }
 
@@ -123,12 +121,12 @@ public class CircularLinkedList<E> implements List<E> {
 
     public int indexOfBookmark(){
         //TODO: Return the index of the finger
-        return indexOf(finger.value);
+        return indexOf(this.finger.value);
         
     }
 
     public E getBookmark(){
-        E result = (size == 0 || finger == head)?  null : get(indexOfBookmark());
+        E result = (size == 0 )?  head.value : get(indexOfBookmark());
         //TODO: Return the element pointed by the finger
         return result;
     }
